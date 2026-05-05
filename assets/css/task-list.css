@@ -99,8 +99,8 @@
 
 .task-title-row {
   display: flex;
-  align-items: baseline;
-  gap: 32px;
+  align-items: center;
+  gap: 64px;
 }
 
 .task-name {
@@ -111,6 +111,14 @@
 .task-deadline {
   font-size: 1.4rem;
   color: var(--dark-grey);
+}
+
+.task-deadline.upcoming {
+  color: rgb(var(--priority-mid));
+}
+
+.task-deadline.overdue {
+  color: rgb(var(--priority-high));
 }
 
 .task-tag {
