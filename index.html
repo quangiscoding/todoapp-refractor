@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To do Ref</title>
+    <link rel="stylesheet" href="./assets/css/main.css" />
+  </head>
+  <body>
+    <main>
+      <section class="task-card">
+        <!-- Header -->
+        <div class="card-header">
+          <!-- Header Top -->
+          <div class="header-top">
+            <div class="header-top__content">
+              <h1 class="header-top__title">Task Manager</h1>
+              <p class="header-top__time">Tuần này 12 - 18 tháng 5</p>
+            </div>
+            <div class="header-top__cta">
+              <button class="header-top__cta-btn" id="addBtn">
+                + Thêm task
+              </button>
+            </div>
+          </div>
+          <!-- Progress section -->
+          <div class="progress-section">
+            <!-- Meta -->
+            <div class="progress-meta">
+              <span class="progress-label">Tiến độ tuần</span>
+              <span class="progress-count" id="progressCount">
+                0 / 0 hoàn thành
+              </span>
+            </div>
+            <!-- Green bar -->
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+          </div>
+        </div>
+        <!-- Filter -->
+        <section class="filter-bar">
+          <div class="filter-searchbar">
+            <button class="filter-search-btn">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+            <input type="text" class="filter-searchbox" id="" id="searchBox" />
+          </div>
+          <div class="filter-pills">
+            <span class="pill pill-all" data-filter="all">All</span>
+            <span class="pill pill-high" data-filter="high">High</span>
+            <span class="pill pill-mid" data-filter="mid">Medium</span>
+            <span class="pill pill-low" data-filter="low">Low</span>
+            <span class="pill pill-deadline" data-filter="deadline">
+              Deadline
+            </span>
+          </div>
+        </section>
+        <section class="task-list" id="taskList">
+          <!-- Empty -->
+          <div class="empty-state" id="emptyState">
+            <p class="empty-message">
+              Chưa có task nào. Hãy thêm mới hoặc chuyển tab!
+            </p>
+            <i class="fa-regular fa-note-sticky"></i>
+          </div>
+          <div class="task-item priority-mid" data-id="1777968899888">
+            <input class="task-checkbox" type="checkbox" data-action="toggle" />
+            <div class="task-body">
+              <div class="task-title-row">
+                <span class="task-name">Bro</span>
+                <span class="priority-badge mid">Medium</span>
+              </div>
+              <div class="task-meta">
+                <span class="task-tag">Bro</span>
+              </div>
+            </div>
+            <div class="task-menu">
+              <button class="task-edit-btn" data-action="edit" title="Sửa">
+                <i class="fa-regular fa-pen-to-square"></i>
+              </button>
+              <button class="task-delete-btn" data-action="delete" title="Xóa">
+                <i class="fa-regular fa-trash-can"></i>
+              </button>
+            </div>
+          </div>
+        </section>
+        <!-- Footer -->
+        <footer class="card-footer">
+          <div class="footer-stats" id="footerStats">
+            0 chưa xong - 0 quá hạn
+          </div>
+          <div class="footer-actions">
+            <button class="btn-export" id="btnExport">Export</button>
+            <button class="btn-clear" id="btnClear">Xóa xong</button>
+          </div>
+        </footer>
+      </section>
+    </main>
+
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal-card" id="modalCard">
+        <!-- Modal header -->
+        <div class="modal-header">
+          <h2 class="modal-title" id="modalTitle">Thêm task mới</h2>
+          <button class="modal-close" id="modalClose">
+            <i class="fa-solid fa-x"></i>
+          </button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label"
+              >Tên task <span class="required">*</span></label
+            >
+            <input
+              type="text"
+              id="inputName"
+              class="form-input"
+              placeholder="Nhập tên task..."
+            />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Độ ưu tiên</label>
+              <select id="inputPriority" class="form-input">
+                <option value="high">🔴 High</option>
+                <option value="mid" selected>🟡 Medium</option>
+                <option value="low">🔵 Low</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Deadline</label>
+              <input type="date" id="inputDeadline" class="form-input" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tag</label>
+            <input
+              type="text"
+              id="inputTag"
+              class="form-input"
+              placeholder="VD: Study, Work, Personal..."
+            />
+          </div>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button class="btn-cancel" id="btnCancel">Hủy</button>
+          <button class="btn-save" id="btnSave">Lưu task</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./assets/js/main.js"></script>
+  </body>
+</html>
