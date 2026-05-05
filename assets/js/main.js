@@ -1,33 +1,5 @@
-// ===== selector helpers =====
-const $ = (sel, root = document) => root.querySelector(sel);
-const $$ = (sel, root = document) => root.querySelectorAll(sel);
-
-// ===== formatting helpers =====
-function capitalize(str) {
-  return str.charAt(0).toUpperCase() + str.slice(1);
-}
-
-function fmtDate(dateStr) {
-  if (!dateStr) return "";
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("en-GB"); // 06/05/2026
-}
-
-function deadlineClass(dateStr) {
-  if (!dateStr) return "";
-  const now = new Date();
-  const d = new Date(dateStr);
-
-  const diff = d.setHours(0, 0, 0, 0) - now.setHours(0, 0, 0, 0);
-
-  if (diff < 0) return "overdue";
-  if (diff <= 2 * 86400000) return "due-soon";
-  return "upcoming";
-}
-
-function deadlineText(dateStr) {
-  return dateStr ? `Due ${fmtDate(dateStr)}` : "";
-}
+import { $$, $ } from "./helpers/selector.helper.js";
+import { capitalize, fmtDate } from "./helpers/format.helper.js";
 
 // ===== UI references =====
 const dom = {
@@ -128,6 +100,7 @@ function titleRow(task) {
 function meta(task) {
   return `
     <div class="task-meta">
+    <span class="task-deadline upcoming">${task.deadline}</span>
       ${task.tag ? `<span class="task-tag">${task.tag}</span>` : ""}
     </div>
   `;
